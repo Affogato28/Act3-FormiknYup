@@ -34,7 +34,8 @@ export default function LoginForm({ navigation }) {
         return false;
       }
 
-      const url = "http://192.168.56.1:8000/api/v1/register";
+      const url = "http://192.168.1.2:8000/api/v1/register";
+
       const data = {
         name,
         email,
@@ -44,7 +45,7 @@ export default function LoginForm({ navigation }) {
  
 
       const result = await fetchServices.postData(url, data);
-      console.debug(result);
+
       if (result?.message != null) {
         showToast(result?.message);
       } else {
@@ -52,8 +53,9 @@ export default function LoginForm({ navigation }) {
       }
     } catch (e) {  
       showToast(e.toString());
-    } 
+    }
   };
+  
 
   return (
     <View styles={{ flex: 1 }}>
@@ -116,8 +118,8 @@ export default function LoginForm({ navigation }) {
         error={isError}
       />
       <Button
-        // disabled={loading}
-        // loading={loading}
+        disabled={loading}
+        loading={loading}
         icon="account-plus"
         mode="contained"
         style={{ marginTop: 10, backgroundColor:'#deb887' }}
@@ -128,7 +130,7 @@ export default function LoginForm({ navigation }) {
       </Button>
       <Button
         disabled={loading}
-        onPress={() => navigation.pop()}
+        onPress={() => navigation.navigate("Login")}
         icon="arrow-left"
         mode="contained"
         style={{ marginTop: 10, backgroundColor:'#deb887' }}

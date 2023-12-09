@@ -1,4 +1,4 @@
-import { View, StyleSheet, SafeAreaView, Image, Text, ImageBackground } from "react-native";
+import { View, StyleSheet, SafeAreaView, Image, Text, ImageBackground, TouchableOpacity } from "react-native";
 import React from "react";
 import { Button } from "react-native-paper";
   
@@ -25,7 +25,12 @@ import { Button } from "react-native-paper";
         <View style={styles.content}>
         <GifComponent />
         </View>
-        <Button style={styles.button}  onPress={() => navigation.navigate("Login")}>Logout</Button>
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Login")}
+      >
+        <Text style={styles.buttonText}>Logout</Text>
+      </TouchableOpacity>
       </SafeAreaView>
     );
   }
